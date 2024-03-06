@@ -15,11 +15,13 @@ const PostList = () => {
       <div className="list-group">
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
-            {page.map((post: Post) => (
-              <li key={post.id} className="list-group-item">
-                {post.title}
-              </li>
-            ))}
+            {page.pages.map((post) =>
+              post.map((content) => (
+                <li key={content.id} className="list-group-item">
+                  {content.title}
+                </li>
+              ))
+            )}
           </React.Fragment>
         ))}
       </div>
