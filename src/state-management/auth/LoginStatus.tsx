@@ -1,22 +1,27 @@
-import { useState } from "react";
+import useAuth from "./useAuth";
 
 const LoginStatus = () => {
-  const [user, setUser] = useState('');
+  const { user, dispatch } = useAuth();
 
-  if (user)
+  if (user) {
     return (
       <>
         <div>
           <span className="mx-2">{user}</span>
-          <a onClick={() => setUser('')} href="#">
+          <a onClick={() => dispatch({ type: "LOGOUT" })} href="#">
             Logout
           </a>
         </div>
       </>
     );
+  }
+
   return (
     <div>
-      <a onClick={() => setUser('mosh.hamedani')} href="#">
+      <a
+        onClick={() => dispatch({ type: "LOGIN", username: "mosh hamedani" })}
+        href="#"
+      >
         Login
       </a>
     </div>
